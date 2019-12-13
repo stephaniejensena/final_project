@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_154927) do
+ActiveRecord::Schema.define(version: 2019_12_12_165929) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,125 @@ ActiveRecord::Schema.define(version: 2019_10_25_154927) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "clothing_items", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.string "pattern"
+    t.string "material"
+    t.string "size"
+    t.string "brand"
+    t.string "retailer"
+    t.float "price"
+    t.string "price_units"
+    t.date "date_purchased"
+    t.string "category"
+    t.integer "quantity"
+    t.text "description"
+    t.integer "owner_id"
+    t.integer "default_image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "clothing_tags", force: :cascade do |t|
+    t.integer "clothing_item_id"
+    t.integer "image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "commenter_id"
+    t.integer "post_id"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "friender_id"
+    t.integer "friendee_id"
+    t.boolean "accepted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "image"
+    t.integer "owner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "liker_id"
+    t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "outfit_components", force: :cascade do |t|
+    t.integer "clothing_item_id"
+    t.integer "outfit_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "outfit_tags", force: :cascade do |t|
+    t.integer "outfit_id"
+    t.integer "image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "outfits", force: :cascade do |t|
+    t.integer "default_image_id"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "owner_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.boolean "just_friends"
+    t.integer "image_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "caption"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.float "height"
+    t.float "weight"
+    t.string "pant_size"
+    t.string "shirt_size"
+    t.string "dress_size"
+    t.string "shoe_size"
+    t.string "pant_size_units"
+    t.string "shirt_size_units"
+    t.string "dress_size_units"
+    t.string "shoe_size_units"
+    t.text "bio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "birthdate"
+    t.string "height_units"
+    t.integer "profile_picture_id"
+  end
+
+  create_table "wears", force: :cascade do |t|
+    t.integer "image_id"
+    t.integer "outfit_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "wear_date"
   end
 
 end
