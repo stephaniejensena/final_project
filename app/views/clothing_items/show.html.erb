@@ -1,0 +1,163 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      <%= @clothing_item.name %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <img src = <%= Image.where({:id => @clothing_item.default_image_id})[0].image %> width="500" height="500" >
+
+        <br> <br>
+
+      </div>
+
+      <div class="col">
+
+        <a href="/closet" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+        <br>
+        <a href="/delete_clothing_item/<%= @clothing_item.id %>" class="btn btn-block btn-outline-secondary">
+          Delete clothing item
+        </a>
+        <br>
+
+        <a href="/modify_clothing_item/<%= @clothing_item.id %>" class="btn btn-block btn-outline-secondary">
+          Edit clothing item
+        </a>
+        <br>
+
+        <dl>
+          <dt>
+            Name
+          </dt>
+          <dd>
+            <%= @clothing_item.name %>
+          </dd>
+
+          <dt>
+            Color
+          </dt>
+          <dd>
+            <%= @clothing_item.color %>
+          </dd>
+
+          <dt>
+            Pattern
+          </dt>
+          <dd>
+            <%= @clothing_item.pattern %>
+          </dd>
+
+          <dt>
+            Material
+          </dt>
+          <dd>
+            <%= @clothing_item.material %>
+          </dd>
+
+          <dt>
+            Size
+          </dt>
+          <dd>
+            <%= @clothing_item.size %>
+          </dd>
+
+          <dt>
+            Brand
+          </dt>
+          <dd>
+            <%= @clothing_item.brand %>
+          </dd>
+
+          <dt>
+            Retailer
+          </dt>
+          <dd>
+            <%= @clothing_item.retailer %>
+          </dd>
+
+          <dt>
+            Price
+          </dt>
+          <dd>
+            <%= sprintf('%.2f', @clothing_item.price) %>
+          </dd>
+
+          <dt>
+            Price units
+          </dt>
+          <dd>
+            <%= @clothing_item.price_units %>
+          </dd>
+
+          <dt>
+            Date purchased
+          </dt>
+          <dd>
+            <%= @clothing_item.date_purchased %>
+          </dd>
+
+          <dt>
+            Category
+          </dt>
+          <dd>
+            <%= @clothing_item.category %>
+          </dd>
+
+          <dt>
+            Quantity
+          </dt>
+          <dd>
+            <%= @clothing_item.quantity %>
+          </dd>
+
+          <dt>
+            Description
+          </dt>
+          <dd>
+            <%= @clothing_item.description %>
+          </dd>
+
+          <dt>
+            Owner
+          </dt>
+          <dd>
+            <%= @clothing_item.owner_id %>
+          </dd>
+
+          <dt>
+            Default image
+          </dt>
+          <dd>
+            <%= @clothing_item.default_image_id %>
+          </dd>
+
+          <dt>
+            Created at
+          </dt>
+          <dd>
+            <%= time_ago_in_words(@clothing_item.created_at) %> ago
+          </dd>
+
+          <dt>
+            Updated at
+          </dt>
+          <dd>
+            <%= time_ago_in_words(@clothing_item.updated_at) %> ago
+          </dd>
+        </dl>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+
+
+
+<hr>

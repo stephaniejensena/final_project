@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all outfits
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new outfit
+    </h2>
+
+    <form action="/insert_outfit" method="post">
+      <div class="form-group">
+        <label for="default_image_id_box">
+          Default image
+        </label>
+
+        <input type="text" id="default_image_id_box" name="default_image_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="description_from_query" class="form-control" rows="3"></textarea>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create outfit
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Default image
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @outfits.each do |outfit| %>
+      <tr>
+        <td>
+          <%= outfit.id %>
+        </td>
+
+        <td>
+          <%= outfit.default_image_id %>
+        </td>
+
+        <td>
+          <%= outfit.description %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(outfit.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(outfit.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/outfits/<%= outfit.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

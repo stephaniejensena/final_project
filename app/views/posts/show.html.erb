@@ -1,0 +1,85 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Post #<%= @post.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/posts" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_post/<%= @post.id %>" class="btn btn-block btn-outline-secondary">
+          Delete post
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Just friends
+      </dt>
+      <dd>
+        <%= @post.just_friends %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @post.image_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@post.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@post.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit post
+    </h2>
+
+    <form action="/modify_post/<%= @post.id %>"  method="post" >
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="just_friends_box" name="just_friends_from_query" value="1" <%= "checked" if @post.just_friends %>>
+
+        <label class="custom-control-label"
+          for="just_friends_box">Just friends</label>
+      </div>
+
+      <div class="form-group">
+        <label for="image_id_box">
+          Image
+        </label>
+
+        <input type="text" id="image_id_box" name="image_id_from_query" class="form-control" value="<%= @post.image_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update post
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

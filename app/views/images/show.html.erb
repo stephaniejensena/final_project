@@ -1,0 +1,86 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Image #<%= @image.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/images" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_image/<%= @image.id %>" class="btn btn-block btn-outline-secondary">
+          Delete image
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @image.image %>
+      </dd>
+
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @image.owner_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@image.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@image.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit image
+    </h2>
+
+    <form action="/modify_image/<%= @image.id %>"  method="post" >
+      <div class="form-group">
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="image_from_query" class="form-control" value="<%= @image.image %>">
+      </div>
+
+      <div class="form-group">
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="owner_id_from_query" class="form-control" value="<%= @image.owner_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update image
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

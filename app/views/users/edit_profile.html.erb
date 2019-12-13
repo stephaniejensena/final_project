@@ -1,0 +1,108 @@
+<div >
+  <h5>
+    Edit User Account
+  </h5>
+
+  <div>
+    <form action="/patch_user" method="post">
+      <div>
+        <label for="first_name_box">First name</label>
+        <input id="first_name_box" name="first_name_from_query" value="<%= @current_user.first_name %>">
+        <div>
+          <label for="last_name_box">Last name</label>
+          <input id="last_name_box" name="last_name_from_query" value="<%= @current_user.last_name %>">
+        </div>
+      </div>
+      <div>
+        <label for="username_box">Username</label>
+        <input id="username_box" name="username_from_query" value="<%= @current_user.username %>">
+      </div>
+      <div>
+        <label for="email_box">Email</label>
+        <input id="email_box" name="email_from_query" value="<%= @current_user.email %>">
+      </div>
+
+      <div class="form-group">
+        <label for="birthdate_box">
+          Birthdate
+        </label>
+        <input type="date" id="birthdate_box" name="birthdate_from_query" class="form-control" value="<%@current_user.birthdate %>">
+      </div>
+
+      <div>
+        <label for="bio_box">Bio</label>
+        <textarea id="bio_box" name="bio_from_query" rows="3"><%= @current_user.bio %></textarea>
+      </div>
+
+      <div>
+        <label for="height_box">Height</label>
+        <input id="height_box" name="height_from_query" value="<%= @current_user.height %>">
+      </div>
+      <div>
+        <label for="height_units_box"> Height units</label>
+        <input id="height_units_box" name="height_units_from_query" value="<%= @current_user.height_units %>">
+      </div>
+
+      <div>
+        <label for="dress_size_box">Dress size</label>
+        <input id="dress_size_box" name="dress_size_from_query" value="<%= @current_user.dress_size %>">
+      </div>
+      <div>
+        <label for="dress_size_units_box">Dress size units</label>
+        <input id="dress_size_units_box" name="dress_size_units_from_query" value="<%= @current_user.dress_size_units %>">
+      </div>
+      <div>
+        <label for="pant_size_box">Pant size</label>
+        <input id="pant_size_box" name="pant_size_from_query" value="<%= @current_user.pant_size %>">
+      </div>
+
+      <div>
+        <label for="pant_size_units_box">Pant size units</label>
+        <input id="pant_size_units_box" name="pant_size_units_from_query" value="<%= @current_user.pant_size_units %>">
+      </div>
+
+      <div>
+        <label for="shirt_size_box">Shirt size</label>
+        <input id="shirt_size_box" name="shirt_size_from_query" value="<%= @current_user.shirt_size %>">
+      </div>
+
+      <div>
+        <label for="shirt_size_units_box">Shirt size units</label>
+        <input id="shirt_size_units_box" name="shirt_size_units_from_query" value="<%= @current_user.shirt_size_units %>">
+      </div>
+      <div>
+        <label for="shoe_size_box">Shoe size</label>
+        <input id="shoe_size_box" name="shoe_size_from_query" value="<%= @current_user.shoe_size %>">
+      </div>
+
+      <div>
+        <label for="shoe_size_units_box">Shoe size units</label>
+        <input id="shoe_size_units_box" name="shoe_size_units_from_query" value="<%= @current_user.shoe_size_units %>">
+      </div>
+      <div>
+        <label for="profile_picture_url_box">Profile picture url</label>
+        <% if @current_user.profile_picture_id %>
+        <input id="profile_picture_url_box" name="profile_picture_url_from_query" value="<%= Image.where({:id => @current_user.profile_picture_id})[0].image %>">
+        <%else %>
+          <input id="profile_picture_url_box" name="profile_picture_url_from_query" >
+        <%end %>
+
+      </div>
+
+
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="password_from_query" placeholder="Choose a password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="password_confirmation_from_query" placeholder="Confirm your password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>

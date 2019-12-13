@@ -1,0 +1,109 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      <%= @current_user.first_name %>'s friends
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add new friends
+    </h2>
+
+    <form action="/insert_friend" method="post">
+
+      <div class="form-group">
+        <label for="friendee_id_box">
+          Friend's username
+        </label>
+
+        <input type="text" id="friendee_id_box" name="friendee_id_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create friend
+      </button>
+    </form>
+    <br>
+
+    <form action="/friend_everyone" method="post">
+      <div class="form-group">
+        <button class="btn btn-block btn-outline-secondary">
+          Friend everyone!
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+<hr>
+<div class="row mb-5">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+
+        <th>
+          Friend's name
+        </th>
+
+        <th>
+          Username
+        </th>
+
+        <th>
+          Friends since
+        </th>
+
+        <th>
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @friends.each do |friend| %>
+        <% @friend_user_id = friend.friender_id %>
+        <% if @friend_user_id == @current_user[:id] %>
+          <% @friend_user_id = friend.friendee_id %>
+        <%end %>
+        <% @friend_user = User.where({:id => @friend_user_id})[0] %>
+      <tr>
+
+        <td>
+          <%= @friend_user.first_name + ' ' + @friend_user.last_name %>
+        </td>
+
+        <td>
+          <%= @friend_user.username %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(friend.created_at) %> ago
+        </td>
+
+        <td>
+          <a href="/profile/<%= @friend_user.id %>">
+            profile
+          </a>
+        </td>
+
+        <td>
+          <a href="/closet/<%= @friend_user.id %>">
+            closet
+          </a>
+        </td>
+
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

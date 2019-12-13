@@ -1,0 +1,174 @@
+
+
+
+
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      <%= @user.first_name%>'s closet
+    </h1>
+
+  </div>
+</div>
+
+<hr>
+
+
+<form action="/insert_clothing_item" method="get">
+  <button class="btn btn-block btn-outline-secondary">
+    add new clothing item
+  </button>
+</form>
+
+<br>
+
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Color
+        </th>
+
+        <th>
+          Pattern
+        </th>
+
+        <th>
+          Material
+        </th>
+
+        <th>
+          Size
+        </th>
+
+        <th>
+          Brand
+        </th>
+
+        <th>
+          Retailer
+        </th>
+
+        <th>
+          Price
+        </th>
+
+        <th>
+          Price units
+        </th>
+
+        <th>
+          Date purchased
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          Quantity
+        </th>
+
+        <th>
+          Description
+        </th>
+
+
+        <th>
+          Image
+        </th>
+
+
+        <th>
+        </th>
+      </tr>
+
+      <% @clothing_items.each do |clothing_item| %>
+      <tr>
+
+        <td>
+          <%= clothing_item.name %>
+        </td>
+
+        <td>
+          <%= clothing_item.color %>
+        </td>
+
+        <td>
+          <%= clothing_item.pattern %>
+        </td>
+
+        <td>
+          <%= clothing_item.material %>
+        </td>
+
+        <td>
+          <%= clothing_item.size %>
+        </td>
+
+        <td>
+          <%= clothing_item.brand %>
+        </td>
+
+        <td>
+          <%= clothing_item.retailer %>
+        </td>
+
+        <td>
+          <%= sprintf('%.2f', clothing_item.price) %>
+        </td>
+
+        <td>
+          <%= clothing_item.price_units %>
+        </td>
+
+        <td>
+          <%= clothing_item.date_purchased %>
+        </td>
+
+        <td>
+          <%= clothing_item.category %>
+        </td>
+
+        <td>
+          <%= clothing_item.quantity %>
+        </td>
+
+        <td>
+          <%= clothing_item.description %>
+        </td>
+
+
+        <td>
+          <img src = <%= Image.where({:id => clothing_item.default_image_id})[0].image %> width="200" height="200" >
+        </td>
+
+
+        <td>
+          <a href="/clothing_item/<%= clothing_item.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<form action="/generate_wardrobe" method="post">
+  <button class="btn btn-block btn-outline-secondary">
+    generate wardrobe
+  </button>
+</form>
+
+
+<hr>

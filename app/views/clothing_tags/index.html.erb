@@ -1,0 +1,102 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all clothing tags
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new clothing tag
+    </h2>
+
+    <form action="/insert_clothing_tag" method="post">
+      <div class="form-group">
+        <label for="clothing_item_id_box">
+          Clothing item
+        </label>
+
+        <input type="text" id="clothing_item_id_box" name="clothing_item_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="image_id_box">
+          Image
+        </label>
+
+        <input type="text" id="image_id_box" name="image_id_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create clothing tag
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Clothing item
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @clothing_tags.each do |clothing_tag| %>
+      <tr>
+        <td>
+          <%= clothing_tag.id %>
+        </td>
+
+        <td>
+          <%= clothing_tag.clothing_item_id %>
+        </td>
+
+        <td>
+          <%= clothing_tag.image_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(clothing_tag.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(clothing_tag.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/clothing_tags/<%= clothing_tag.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

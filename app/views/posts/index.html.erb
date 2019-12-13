@@ -1,0 +1,100 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all posts
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new post
+    </h2>
+
+    <form action="/insert_post" method="post">
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="just_friends_box" name="just_friends_from_query" value="1">
+
+        <label class="custom-control-label" for="just_friends_box">Just friends</label>
+      </div>
+
+      <div class="form-group">
+        <label for="image_id_box">
+          Image
+        </label>
+
+        <input type="text" id="image_id_box" name="image_id_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create post
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Just friends
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <%= post.id %>
+        </td>
+
+        <td>
+          <%= post.just_friends %>
+        </td>
+
+        <td>
+          <%= post.image_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(post.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(post.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/posts/<%= post.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,86 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Wear #<%= @wear.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/wears" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_wear/<%= @wear.id %>" class="btn btn-block btn-outline-secondary">
+          Delete wear
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @wear.image_id %>
+      </dd>
+
+      <dt>
+        Outfit
+      </dt>
+      <dd>
+        <%= @wear.outfit_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@wear.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@wear.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit wear
+    </h2>
+
+    <form action="/modify_wear/<%= @wear.id %>"  method="post" >
+      <div class="form-group">
+        <label for="image_id_box">
+          Image
+        </label>
+
+        <input type="text" id="image_id_box" name="image_id_from_query" class="form-control" value="<%= @wear.image_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="outfit_id_box">
+          Outfit
+        </label>
+
+        <input type="text" id="outfit_id_box" name="outfit_id_from_query" class="form-control" value="<%= @wear.outfit_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update wear
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

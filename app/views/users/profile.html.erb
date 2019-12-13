@@ -1,0 +1,128 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      <%= @user.username %> profile
+    </h1>
+
+    <div class="row mb-3">
+
+
+      <div class="col">
+        <% if @user.id == @current_user.id %>
+        <a href="/edit_user" class="btn btn-block btn-outline-secondary">
+          Edit profile
+        </a>
+        <% end %>
+
+        <dl>
+          <dt>
+            first name
+          </dt>
+          <dd>
+            <%= @user.first_name %>
+          </dd>
+
+          <dt>
+            last name
+          </dt>
+          <dd>
+            <%= @user.last_name %>
+          </dd>
+
+          <dt>
+            username
+          </dt>
+          <dd>
+            <%= @user.username %>
+          </dd>
+
+          <dt>
+            email
+          </dt>
+          <dd>
+            <%= @user.email%>
+          </dd>
+
+          <dt>
+            birthdate
+          </dt>
+          <dd>
+            <%= @user.birthdate %>
+          </dd>
+
+          <dt>
+            bio
+          </dt>
+          <dd>
+            <%= @user.bio%>
+          </dd>
+
+          <dt>
+            height
+          </dt>
+          <% if @user.height and @user.height_units%>
+          <dd>
+            <%= @user.height.to_s + ' ' + @user.height_units %>
+          </dd>
+          <%end %>
+
+          <dt>
+            dress size
+          </dt>
+
+          <% if @user.dress_size and @user.dress_size_units%>
+          <dd>
+            <%= @user.dress_size + ' ' + @user.dress_size_units%>
+          </dd>
+          <%end %>
+
+          <dt>
+            pant size
+          </dt>
+
+          <% if @user.pant_size and @user.pant_size_units%>
+          <dd>
+            <%= @user.pant_size + ' ' + @user.pant_size_units%>
+          </dd>
+          <%end %>
+          <dt>
+            shirt size
+          </dt>
+
+            <% if @user.shirt_size and @user.shirt_size_units%>
+          <dd>
+            <%= @user.shirt_size + ' ' + @user.shirt_size_units%>
+          </dd>
+          <%end %>
+          <dt>
+            shoe size
+          </dt>
+
+              <% if @user.shoe_size and @user.shoe_size_units%>
+          <dd>
+            <%= @user.shoe_size + ' ' + @user.shoe_size_units%>
+          </dd>
+          <%end %>
+
+        </dl>
+
+      </div>
+
+      <div class="col">
+        <% if @user.profile_picture_id %>
+          <img src = <%= Image.where({:id => @user.profile_picture_id})[0].image %> width="500" height="500" >
+        <% end %>
+        <br> <br>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+
+
+
+<hr>

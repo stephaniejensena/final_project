@@ -1,0 +1,101 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Comment #<%= @comment.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/comments" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_comment/<%= @comment.id %>" class="btn btn-block btn-outline-secondary">
+          Delete comment
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Commenter
+      </dt>
+      <dd>
+        <%= @comment.commenter_id %>
+      </dd>
+
+      <dt>
+        Post
+      </dt>
+      <dd>
+        <%= @comment.post_id %>
+      </dd>
+
+      <dt>
+        Content
+      </dt>
+      <dd>
+        <%= @comment.content %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@comment.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@comment.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit comment
+    </h2>
+
+    <form action="/modify_comment/<%= @comment.id %>"  method="post" >
+      <div class="form-group">
+        <label for="commenter_id_box">
+          Commenter
+        </label>
+
+        <input type="text" id="commenter_id_box" name="commenter_id_from_query" class="form-control" value="<%= @comment.commenter_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="post_id_box">
+          Post
+        </label>
+
+        <input type="text" id="post_id_box" name="post_id_from_query" class="form-control" value="<%= @comment.post_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="content_box">
+          Content
+        </label>
+
+        <textarea id="content_box" name="content_from_query" class="form-control" rows="3"><%= @comment.content %></textarea>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update comment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
